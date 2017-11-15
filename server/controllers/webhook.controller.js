@@ -30,6 +30,6 @@ export async function testWebhook(req, res) {
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);      
     }
-    res.sendStatus(403);
-  }
+  } 
+  return res.sendStatus(403);
 }
