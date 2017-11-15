@@ -8,7 +8,9 @@ Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
 
 export async function testWebhook(req, res) {
   let VERIFY_TOKEN = 'THIS_IS_VERIFY_TOKEN_FOR_MESSAGER_BOT_CALLED_MEATCUTE';
-    
+  
+  
+  console.log('TESTING');  
   // Parse the query params
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
@@ -28,5 +30,6 @@ export async function testWebhook(req, res) {
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);      
     }
+    res.sendStatus(403);
   }
 }
