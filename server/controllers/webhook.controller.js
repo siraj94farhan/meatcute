@@ -4,7 +4,7 @@ import { APP_ID, MASTER_KEY, HOST, PORT } from '../../config';
 
 Parse.initialize(APP_ID);
 Parse.masterKey = MASTER_KEY;
-Parse.serverUrl = `http://${HOST}:${PORT}/jamb`;
+Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
 
 const Organization = Parse.Object.extend('organization');
 
