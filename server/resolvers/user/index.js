@@ -24,13 +24,6 @@ const resolvers = {
       return user.toJSON();
     },
   },
-
-  User: {
-    organization: async (user) => {
-      const organization = await new Parse.Query(Organization).get(user.organization_id);
-      return organization.toJSON();
-    },
-  },
 };
 
 export default resolvers;

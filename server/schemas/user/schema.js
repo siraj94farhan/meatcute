@@ -4,7 +4,6 @@ const User = `
      username: String!,
      name: String,
      pipedrive_person_id: String,
-     organization: Organization,
      email: String,
      phone: String,
   }`;
