@@ -6,16 +6,27 @@ Parse.initialize(APP_ID);
 Parse.masterKey = MASTER_KEY;
 Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
 
-const Organization = Parse.Object.extend('organization');
-
-export async function createOrganization(req, res) {
-  const { name, id } = req.body.current;
-  let organization = new Organization();
-
-  organization.set('name', name);
-  organization.set('pipedrive_organization_id', id);
-
-  organization = await organization.save();
-
-  res.json(organization.toJSON());
+export async function testWebhook(req, res) {
+  let VERIFY_TOKEN = 'THIS_IS_VERIFY_TOKEN_FOR_MESSAGER_BOT_CALLED_MEATCUTE';
+    
+  // Parse the query params
+  let mode = req.query['hub.mode'];
+  let token = req.query['hub.verify_token'];
+  let challenge = req.query['hub.challenge'];
+    
+  // Checks if a token and mode is in the query string of the request
+  if (mode && token) {
+  
+    // Checks the mode and token sent is correct
+    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+      
+      // Responds with the challenge token from the request
+      console.log('WEBHOOK_VERIFIED');
+      res.status(200).send(challenge);
+    
+    } else {
+      // Responds with '403 Forbidden' if verify tokens do not match
+      res.sendStatus(403);      
+    }
+  }
 }
