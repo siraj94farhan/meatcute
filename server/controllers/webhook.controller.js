@@ -50,7 +50,7 @@ async function handlePostback(senderId, postback) {
   const { payload } = postback;
   switch (payload) {
     case 'GET_STARTED':
-      await saveProfileToDB();
+      await saveProfileToDB(senderId);
       sendQuickReplyButtons(senderId, 'Select your language', [
         {
           content_type: 'text',
