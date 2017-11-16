@@ -30,7 +30,7 @@ export async function testWebhook(req, res) {
 }
 
 export async function messageRecieved(req, res) {
-  const { data: { entry: entries } } = req.body;
+  const { entry: entries } = req.body;
 
   entries.map((entry) => {
     const { messaging: messagings } = entry;
