@@ -7,6 +7,8 @@ Parse.initialize(APP_ID);
 Parse.masterKey = MASTER_KEY;
 Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
 
+console.log(`http://${HOST}:${PORT}/meatcute`);
+
 const Profile = Parse.Object.extend('profile');
 
 export async function saveProfileToDB(senderId) {
