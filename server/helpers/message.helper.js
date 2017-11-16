@@ -24,3 +24,24 @@ export async function sendQuickReplyButtons(recipientId, quickReplyText, quickRe
 
   await request(options);
 }
+
+export async function sendMessage(recipientId, text) {
+  const body = {
+    recipient: {
+      id: recipientId,
+    },
+    message: {
+      text,
+    },
+  };
+  const options = {
+    uri: `https://graph.facebook.com/v2.6/me/messages?access_token=${FB_PAGE_ACCESS_TOKEN}`,
+    body,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    json: true,
+  };
+  await request(options);
+}
