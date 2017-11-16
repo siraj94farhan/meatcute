@@ -29,8 +29,5 @@ export async function testWebhook(req, res) {
       return res.sendStatus(403);      
     }
   } 
-  return res.json({
-    mode: mode+'',
-    token: token+''
-  });
+  return res.json(req.query);
 }
