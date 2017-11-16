@@ -19,13 +19,8 @@ export async function sendQuickReplyButtons(recipientId, quickReplyText, quickRe
       'Content-Type': 'application/json',
     },
     method: 'POST',
+    json: true,
   };
 
-  console.log(options);
-
-  try {
-    await request(options);
-  } catch (e) {
-    console.log(e);
-  }
+  await request(options);
 }

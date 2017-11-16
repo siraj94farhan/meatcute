@@ -8,7 +8,6 @@ const api = new ParseServer({
   appId: config.APP_ID,
   masterKey: config.MASTER_KEY,
   serverURL: `http://${config.HOST}:${config.PORT}/meatcute`,
-  publicServerURL: `${config.PUBLIC_SERVER_URL}/`,
 });
 
 export default api;
