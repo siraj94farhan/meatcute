@@ -21,5 +21,11 @@ export async function sendQuickReplyButtons(recipientId, quickReplyText, quickRe
     method: 'POST',
   };
 
-  await request(options);
+  console.log(options);
+
+  try {
+    await request(options);
+  } catch (e) {
+    console.log(e);
+  }
 }
