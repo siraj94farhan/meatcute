@@ -5,9 +5,9 @@ import { APP_ID, MASTER_KEY, HOST, PORT, FB_PAGE_ACCESS_TOKEN } from '../../conf
 
 Parse.initialize(APP_ID);
 Parse.masterKey = MASTER_KEY;
-Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
+Parse.serverUrl = `http://${HOST}:${PORT}/parse`;
 
-console.log(`http://${HOST}:${PORT}/meatcute`);
+console.log(`http://${HOST}:${PORT}/parse`);
 
 const Profile = Parse.Object.extend('profile');
 

@@ -7,7 +7,7 @@ const api = new ParseServer({
   cloud: `${__dirname}/../server/cloud/index.js`,
   appId: config.APP_ID,
   masterKey: config.MASTER_KEY,
-  serverURL: `http://${config.HOST}:${config.PORT}/meatcute`,
+  serverURL: `http://${config.HOST}:${config.PORT}/parse`,
 });
 
 export default api;
