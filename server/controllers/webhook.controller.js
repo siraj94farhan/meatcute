@@ -29,5 +29,5 @@ export async function testWebhook(req, res) {
       return res.sendStatus(403);      
     }
   } 
-  return res.sendStatus(403);
+  return res.send('ERROR');
 }
