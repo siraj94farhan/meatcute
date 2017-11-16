@@ -16,13 +16,16 @@ export async function saveProfileToDB(senderId) {
       uri: `https://graph.facebook.com/v2.6/${senderId}?fields=${fields}&access_token=${FB_PAGE_ACCESS_TOKEN}`,
       json: true,
     };
-    const profile = await request(options);
+    const { first_name, last_name, gender, profile_pic, locale, id } = await request(options);
     let profileObj = await new Parse.Query(Profile).equalTo('facebook_id', senderId).first();
     if (!profileObj) {
-      profile.facebook_id = senderId;
-      delete profile.id;
       profileObj = new Profile();
-      profileObj.set(profile);
+      profileObj.set('first_name', first_name);
+      profileObj.set('last_name', last_name);
+      profileObj.set('gender', gender);
+      profileObj.set('profile_pic', profile_pic);
+      profileObj.set('locale', locale);
+      profileObj.set('facebook_id', id);
       await profileObj.save();
     }
   } catch (e) {
