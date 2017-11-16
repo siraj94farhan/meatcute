@@ -36,7 +36,7 @@ export async function messageRecieved(req, res) {
     const { messaging: messagings } = entry;
     return messagings.map((messaging) => {
       const { sender: { id: senderId }, postback, message } = messaging;
-      console.log('MESSAGING', messaging)
+      console.log('MESSAGING', messaging);
       if (postback) {
         return handlePostback(senderId, postback);
       }
@@ -52,16 +52,23 @@ async function handlePostback(senderId, postback) {
     case 'GET_STARTED':
       onGetStartedPostback(senderId);
       break;
-    case 'en_US':
-    case 'hi_IN':
-    case 'kn_IN':
-      onLanguageSelectionPostback(senderId, payload);
-      break;
     default:
       break;
   }
 }
 
-async function handleMessage(message) {
-
+async function handleMessage(senderId, message) {
+  const { quick_reply: quickReply } = message;
+  if (quickReply) {
+    const { payload } = quickReply;
+    switch (payload) {
+      case 'en_US':
+      case 'hi_IN':
+      case 'kn_IN':
+        onLanguageSelectionPostback(senderId, payload);
+        break;
+      default:
+        break;
+    }
+  }
 }
