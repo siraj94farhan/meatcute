@@ -23,3 +23,5 @@ export const PASSWORD_RESET_VALIDITY_DURATION = process.env.PASSWORD_RESET_VALID
 
 export const GMAIL_USERNAME = process.env.GMAIL_USERNAME;
 export const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
+
+export const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
