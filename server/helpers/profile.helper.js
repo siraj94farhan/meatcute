@@ -18,6 +18,8 @@ export async function saveProfileToDB(senderId) {
     };
     const { first_name, last_name, gender, profile_pic, locale, id } = await request(options);
     let profileObj = await new Parse.Query(Profile).equalTo('facebook_id', senderId).first();
+    console.log('TEST HERE');
+    console.log(profileObj);
     if (!profileObj) {
       profileObj = new Profile();
       profileObj.set('first_name', first_name);
