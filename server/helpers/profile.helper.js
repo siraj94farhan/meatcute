@@ -17,9 +17,11 @@ export async function saveProfileToDB(senderId) {
       json: true,
     };
     const profile = await request(options);
+    console.log(profile);
     let profileObj = await new Parse.Query(Profile).equalTo('facebook_id', senderId);
-
+    console.log('PROFILE', profileObj);
     if (!profileObj) {
+      console.log('IN HERE');
       profile.facebook_id = senderId;
       delete profile.id;
       profileObj = new Profile();
