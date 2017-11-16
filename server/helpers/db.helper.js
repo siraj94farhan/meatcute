@@ -7,8 +7,6 @@ Parse.initialize(APP_ID);
 Parse.masterKey = MASTER_KEY;
 Parse.serverUrl = `http://${HOST}:${PORT}/parse`;
 
-console.log(`http://${HOST}:${PORT}/parse`);
-
 const Profile = Parse.Object.extend('profile');
 
 export async function saveProfileToDB(senderId) {
@@ -20,8 +18,6 @@ export async function saveProfileToDB(senderId) {
     };
     const { first_name, last_name, gender, profile_pic, locale, id } = await request(options);
     let profileObj = await new Parse.Query(Profile).equalTo('facebook_id', senderId).first();
-    console.log('TEST HERE');
-    console.log(profileObj);
     if (!profileObj) {
       profileObj = new Profile();
       profileObj.set('first_name', first_name);
@@ -30,10 +26,17 @@ export async function saveProfileToDB(senderId) {
       profileObj.set('profile_pic', profile_pic);
       profileObj.set('locale', locale);
       profileObj.set('facebook_id', id);
-      console.log(profileObj.toJSON());
       await profileObj.save();
     }
   } catch (e) {
     console.log(e);
+  }
+}
+
+export async function changeLanguage(senderId, language) {
+  const profileObj = await new Parse.Query(Profile).equalTo('facebook_id', senderId).first();
+  if (profileObj) {
+    profileObj.set('locale', language);
+    await profileObj.save();
   }
 }
