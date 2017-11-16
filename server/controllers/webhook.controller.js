@@ -36,6 +36,7 @@ export async function messageRecieved(req, res) {
     const { messaging: messagings } = entry;
     return messagings.map((messaging) => {
       const { sender: { id: senderId }, postback, message } = messaging;
+      console.log('MESSAGING', messaging)
       if (postback) {
         return handlePostback(senderId, postback);
       }
