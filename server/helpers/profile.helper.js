@@ -26,6 +26,7 @@ export async function saveProfileToDB(senderId) {
       profileObj.set('profile_pic', profile_pic);
       profileObj.set('locale', locale);
       profileObj.set('facebook_id', id);
+      console.log(profileObj.toJSON());
       await profileObj.save();
     }
   } catch (e) {
