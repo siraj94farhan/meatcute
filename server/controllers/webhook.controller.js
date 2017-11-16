@@ -1,6 +1,7 @@
 import Parse from 'parse/node';
 
 import { sendQuickReplyButtons } from '../helpers/message.helper';
+import { saveProfileToDB } from '../helpers/profile.helper';
 
 import { APP_ID, MASTER_KEY, HOST, PORT } from '../../config';
 
@@ -49,20 +50,21 @@ async function handlePostback(senderId, postback) {
   const { payload } = postback;
   switch (payload) {
     case 'GET_STARTED':
+      await saveProfileToDB();
       sendQuickReplyButtons(senderId, 'Select your language', [
         {
           content_type: 'text',
-          payload: 'ENGLISH',
+          payload: 'en_US',
           title: 'English',
         },
         {
           content_type: 'text',
-          payload: 'KANNADA',
+          payload: 'kn_IN',
           title: '\u0C95\u0CA8\u0CCD\u0CA8\u0CA1',
         },
         {
           content_type: 'text',
-          payload: 'HINDI',
+          payload: 'hi_IN',
           title: '\u0939\u093F\u0928\u094D\u0926\u0940',
         },
       ]);
