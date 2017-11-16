@@ -7,7 +7,6 @@ Parse.masterKey = MASTER_KEY;
 Parse.serverUrl = `http://${HOST}:${PORT}/meatcute`;
 
 export async function testWebhook(req, res) {
-  console.log(req.body);
   let VERIFY_TOKEN = 'THIS_IS_VERIFY_TOKEN_FOR_MESSAGER_BOT_CALLED_MEATCUTE';
   
     // Parse the query params
@@ -31,4 +30,10 @@ export async function testWebhook(req, res) {
     }
   } 
   return res.json(req.query);
+}
+
+export async function messageRecieved(req, res) {
+  var data = req.body;
+	console.log(JSON.stringify(data));
+  res.sendStatus(200);
 }

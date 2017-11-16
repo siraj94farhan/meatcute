@@ -1,9 +1,10 @@
 import express from 'express';
-import { testWebhook } from '../controllers/webhook.controller';
+import { testWebhook, messageRecieved } from '../controllers/webhook.controller';
 
 const router = new express.Router();
 
 router.route('/')
-      .get(testWebhook);
+      .get(testWebhook)
+      .post(messageRecieved);
 
 export default router;
